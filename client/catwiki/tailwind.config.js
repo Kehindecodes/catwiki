@@ -16,6 +16,7 @@ export default {
 
 			fontFamily: {
 				montserrat: ['Montserrat', 'sans-serif'],
+				mystery: ['Mystery Quest', 'cursive'],
 			},
 			screens: {
 				xs: '320px',
@@ -23,6 +24,17 @@ export default {
 				md: '764px',
 				lg: '1024px',
 				xl: '1280px',
+			},
+			width: {
+				hero: '1248px',
+				input: '384.64px',
+			},
+			height: {
+				hero: '538.19px',
+			},
+			backgroundImage: {
+				'hero-image': "url('./src/assets/HeroImagemd.png')",
+				'footer-texture': "url('/img/footer-texture.png')",
 			},
 		},
 	},
