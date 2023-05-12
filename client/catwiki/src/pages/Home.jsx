@@ -7,6 +7,7 @@ import { BsArrowRight } from 'react-icons/bs';
 import breed from '../assets/image 2.png';
 import breed1 from '../assets/image 1.png';
 import breed3 from '../assets/image 3.png';
+import Footer from '../componets/Footer';
 
 const Home = () => {
 	return (
@@ -143,6 +144,7 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
+			<Footer />
 		</>
 	);
 };

@@ -34,6 +34,8 @@ export default {
 				image3: '238.47px',
 				image1: '195.49px',
 				content: '620px',
+				catImg: '371.04px',
+				shadow: '83.64px',
 			},
 			height: {
 				hero: '538.19px',
@@ -41,10 +43,15 @@ export default {
 				image2: '167.08px',
 				image3: '385.87px',
 				image1: '293.24px',
+				catImg: '371.04px',
+				shadow: '305.12px',
 			},
 			backgroundImage: {
 				'hero-image': "url('./src/assets/HeroImagemd.png')",
 				'footer-texture': "url('/img/footer-texture.png')",
+			},
+			shadow: {
+				cat: '#dec689',
 			},
 		},
 	},
