@@ -36,6 +36,8 @@ export default {
 				content: '620px',
 				catImg: '371.04px',
 				shadow: '83.64px',
+				catdetails: '601px',
+				photo: '278px',
 			},
 			height: {
 				hero: '538.19px',
@@ -45,6 +47,7 @@ export default {
 				image1: '293.24px',
 				catImg: '371.04px',
 				shadow: '305.12px',
+				photo: '278px',
 			},
 			backgroundImage: {
 				'hero-image': "url('./src/assets/HeroImagemd.png')",
