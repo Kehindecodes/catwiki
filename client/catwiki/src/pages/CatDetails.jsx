@@ -22,7 +22,7 @@ const CatDetails = () => {
 	return (
 		<div className='h-screen flex-grow'>
 			<Header />
-			<div className='mx-9 flex mt-9'>
+			<div className='mx-16 flex mt-9'>
 				{/* cat image */}
 				<div className='relative w-catImg h-catImg mr-14'>
 					<div className='absolute inset-0 w-shadow h-shadow rounded-3xl bg-shadow mt-8 '></div>
@@ -177,7 +177,7 @@ const CatDetails = () => {
 					</div>
 				</div>
 			</div>
-			<div className='mt-8 mx-9'>
+			<div className='mt-8 mx-16'>
 				<h2 className='font-bold text-primary font-montserrat mb-8 text-4xl'>
 					Other Photos
 				</h2>

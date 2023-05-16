@@ -13,7 +13,7 @@ const Home = () => {
 	return (
 		<>
 			<Header />
-			<section className='mx-9 bg-hero-image h-hero w-auto rounded-t-3xl'>
+			<section className='mx-16 bg-hero-image h-hero w-auto rounded-t-3xl'>
 				<div className='px-20 flex justify-center items-start flex-col py-32'>
 					<div className='text-white flex items-center'>
 						<h3 className='text-6xl mb-3 font-mystery '>Catwiki</h3>
@@ -40,7 +40,7 @@ const Home = () => {
 				</div>
 			</section>
 			{/* breeds */}
-			<section className='bg-secondary mx-9 py-6 px-20 rounded-b-3xl'>
+			<section className='bg-secondary mx-16 py-6 px-20 rounded-b-3xl'>
 				<p className='text-primary font-montserrat text-lg font-medium'>
 					Most Search Breeds
 				</p>
@@ -106,7 +106,7 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
-			<section className='bg-white mx-9 py-6 px-20 flex'>
+			<section className='bg-white mx-16 py-6 px-20 flex'>
 				{/* content */}
 				<div className='w-content self-center '>
 					<div className='bg-divider w-14 h-1 mb-4'></div>

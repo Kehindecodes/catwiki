@@ -3,7 +3,7 @@ import logo from '../assets/CatwikiLogo.svg';
 
 const Header = () => {
 	return (
-		<header className='mx-8 my-4'>
+		<header className='mx-16 my-4'>
 			<nav className='bg-white'>
 				<div className=''>
 					<a href='/' className=''>

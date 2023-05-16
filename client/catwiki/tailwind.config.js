@@ -38,6 +38,7 @@ export default {
 				shadow: '83.64px',
 				catdetails: '601px',
 				photo: '278px',
+				breed: '170px',
 			},
 			height: {
 				hero: '538.19px',
@@ -48,6 +49,7 @@ export default {
 				catImg: '371.04px',
 				shadow: '305.12px',
 				photo: '278px',
+				breed: '170px',
 			},
 			backgroundImage: {
 				'hero-image': "url('./src/assets/HeroImagemd.png')",
