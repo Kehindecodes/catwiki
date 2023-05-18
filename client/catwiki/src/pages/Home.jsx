@@ -8,17 +8,34 @@ import breed from '../assets/image 2.png';
 import breed1 from '../assets/image 1.png';
 import breed3 from '../assets/image 3.png';
 import Footer from '../componets/Footer';
-import { httpGetAllCatsBreeds, httpGetTopBreeds } from '../hooks/request';
+import { httpGetAllCatsBreeds, httpGetAllCatsImages } from '../hooks/request';
 
 const Home = () => {
+	const [catData, setCatData] = useState([]);
 	const [allBreeds, setAllBreeds] = useState([]);
+
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const allBreedsResponse = await httpGetAllCatsBreeds();
-				console.log(allBreedsResponse.data);
-				setAllBreeds(allBreedsResponse.data.map((breed) => breed.name));
-				console.log(allBreeds);
+				const catBreedsresponse = await httpGetAllCatsBreeds();
+				const catImagesresponse = await httpGetAllCatsImages();
+
+				const catBreeds = catBreedsresponse.data;
+				const catImages = catImagesresponse.data;
+				console.log(catBreeds);
+				setAllBreeds(catBreeds);
+
+				const combinedData = catImages.map((catImage, index) => ({
+					id: catImage.id,
+					url: catImage.url,
+					name: catBreeds[index].name,
+					length: catBreeds.length,
+				}));
+
+				setCatData(combinedData);
+				console.log(catData.length);
+
+				console.log(catData.length);
 			} catch (error) {
 				console.error(error);
 			}
@@ -26,6 +43,7 @@ const Home = () => {
 
 		fetchData();
 	}, []);
+	catData.length = 4;
 	return (
 		<div>
 			<Header />
@@ -39,7 +57,8 @@ const Home = () => {
 						Get to know more about your
 						<br /> cat breed
 					</p>
-					<div className='relative'>
+
+					{/* <div className='relative'>
 						<input
 							type='text'
 							className='form-input px-6 py-3 rounded-full w-input mt-6 focus:outline-none font-montserrat text-primary text-lg'
@@ -52,7 +71,7 @@ const Home = () => {
 								<HiSearch className='h-4 w-4 text-primary my-5' />
 							</button>
 						</span>
-					</div>
+					</div> */}
 				</div>
 			</section>
 			{/* breeds */}
@@ -80,46 +99,18 @@ const Home = () => {
 				</div>
 				{/* breed images */}
 				<div className='my-12 flex space-x-20'>
-					<div>
-						<img
-							src={breed}
-							alt=' cats'
-							className='w-breedImg h-breedImg rounded-lg'
-						/>
-						<p className='text-primary font-montserrat text-lg mt-4 font-semibold'>
-							savannah
-						</p>
-					</div>
-					<div>
-						<img
-							src={breed}
-							alt=' cats'
-							className='w-breedImg h-breedImg rounded-lg'
-						/>
-						<p className='text-primary font-montserrat text-lg mt-4 font-semibold'>
-							savannah
-						</p>
-					</div>
-					<div>
-						<img
-							src={breed}
-							alt=' cats'
-							className='w-breedImg h-breedImg rounded-lg'
-						/>
-						<p className='text-primary font-montserrat text-lg mt-4 font-semibold'>
-							savannah
-						</p>
-					</div>
-					<div>
-						<img
-							src={breed}
-							alt=' cats'
-							className='w-breedImg h-breedImg rounded-lg'
-						/>
-						<p className='text-primary font-montserrat text-lg mt-4 font-semibold'>
-							savannah
-						</p>
-					</div>
+					{catData.map((cat) => (
+						<div key={cat.id}>
+							<img
+								src={cat.url}
+								alt=' cats'
+								className='w-breedImg h-breedImg rounded-lg'
+							/>
+							<p className='text-primary font-montserrat text-lg mt-4 font-semibold'>
+								{cat.name}
+							</p>
+						</div>
+					))}
 				</div>
 			</section>
 			<section className='bg-white mx-16 py-6 px-20 flex'>
