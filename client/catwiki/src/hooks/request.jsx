@@ -11,6 +11,16 @@ async function httpGetAllCatsBreeds() {
 		};
 	}
 }
+async function httpGetAllCatsImages() {
+	try {
+		const response = await axios.get(`${API_URL}/api/v1/catimages`);
+		return response;
+	} catch (err) {
+		return {
+			ok: false,
+		};
+	}
+}
 
 async function httpGetCatsImagesByBreed(breedId) {
 	try {
@@ -40,4 +50,9 @@ async function httpGetTopBreeds() {
 	}
 }
 
-export { httpGetAllCatsBreeds, httpGetCatsImagesByBreed, httpGetTopBreeds };
+export {
+	httpGetAllCatsBreeds,
+	httpGetCatsImagesByBreed,
+	httpGetTopBreeds,
+	httpGetAllCatsImages,
+};
