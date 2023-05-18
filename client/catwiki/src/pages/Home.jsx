@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../componets/Header';
 import logo from '../assets/CatwikiLogo.svg';
 import { HiSearch } from 'react-icons/hi';
@@ -8,10 +8,26 @@ import breed from '../assets/image 2.png';
 import breed1 from '../assets/image 1.png';
 import breed3 from '../assets/image 3.png';
 import Footer from '../componets/Footer';
+import { httpGetAllCatsBreeds, httpGetTopBreeds } from '../hooks/request';
 
 const Home = () => {
+	const [allBreeds, setAllBreeds] = useState([]);
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				const allBreedsResponse = await httpGetAllCatsBreeds();
+				console.log(allBreedsResponse.data);
+				setAllBreeds(allBreedsResponse.data.map((breed) => breed.name));
+				console.log(allBreeds);
+			} catch (error) {
+				console.error(error);
+			}
+		}
+
+		fetchData();
+	}, []);
 	return (
-		<>
+		<div>
 			<Header />
 			<section className='mx-16 bg-hero-image h-hero w-auto rounded-t-3xl'>
 				<div className='px-20 flex justify-center items-start flex-col py-32'>
@@ -47,7 +63,7 @@ const Home = () => {
 				<div className='bg-primary w-14 h-1'></div>
 				<div className='flex justify-between'>
 					<h2 className='font-montserrat font-bold text-primary my-10 text-5xl'>
-						66+ Breeds For you <br /> to discover
+						{allBreeds.length - 1}+ Breeds For you <br /> to discover
 					</h2>
 					<div
 						className='flex self-end items-center font-bold text-lg font-montserrat text-textTrans
@@ -145,7 +161,7 @@ const Home = () => {
 				</div>
 			</section>
 			<Footer />
-		</>
+		</div>
 	);
 };
 

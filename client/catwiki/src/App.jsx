@@ -8,9 +8,9 @@ import CatBreeds from './pages/CatBreeds.jsx';
 function App() {
 	return (
 		<>
-			{/* <Home /> */}
+			<Home />
 			{/* <CatDetails /> */}
-			<CatBreeds />
+			{/* <CatBreeds /> */}{' '}
 		</>
 	);
 }

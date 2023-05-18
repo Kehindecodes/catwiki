@@ -3,8 +3,8 @@ const API_URL = 'http://localhost:9000';
 
 async function httpGetAllCatsBreeds() {
 	try {
-		const response = await axios.get(`${API_URL}/`);
-		return await response.json();
+		const response = await axios.get(`${API_URL}/api/v1/breeds`);
+		return response;
 	} catch (err) {
 		return {
 			ok: false,

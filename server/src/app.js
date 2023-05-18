@@ -8,16 +8,12 @@ const catBreedRouter = require('./routes/catBreeds.route');
 const topCatBreedsRouter = require('./routes/topCatBreed.router');
 const catImagesRouter = require('./routes/catImages.router');
 
-app.use(
-	cors({
-		origin: 'http://localhost:5173',
-	}),
-);
+app.use(cors());
 app.use(express.json());
 
 // route
-app.use('/', catBreedRouter);
-app.use('/images', catImagesRouter);
-app.use(topCatBreedsRouter);
+app.use('/api/v1/breeds', catBreedRouter);
+app.use('/api/v1/images', catImagesRouter);
+app.use('/api/v1/topbreeds', topCatBreedsRouter);
 
 module.exports = app;

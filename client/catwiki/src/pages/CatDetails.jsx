@@ -12,6 +12,8 @@ const CatDetails = () => {
 	const [socialNeeds, setSocialNeeds] = useState(5);
 	const [strangerFriendly, setStrangerFriendly] = useState(3);
 
+	console.log(affection);
+
 	const getColorClass = (level, index) => {
 		if (index < level) {
 			return 'bg-primary';
