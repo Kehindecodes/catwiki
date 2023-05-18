@@ -9,6 +9,8 @@ import breed1 from '../assets/image 1.png';
 import breed3 from '../assets/image 3.png';
 import Footer from '../componets/Footer';
 import { httpGetAllCatsBreeds, httpGetAllCatsImages } from '../hooks/request';
+import SearchDropdown from '../componets/Dropdown';
+import Dropdown from '../componets/Dropdown';
 
 const Home = () => {
 	const [catData, setCatData] = useState([]);
@@ -57,21 +59,7 @@ const Home = () => {
 						Get to know more about your
 						<br /> cat breed
 					</p>
-
-					{/* <div className='relative'>
-						<input
-							type='text'
-							className='form-input px-6 py-3 rounded-full w-input mt-6 focus:outline-none font-montserrat text-primary text-lg'
-							placeholder='Enter your breed'
-						/>
-						<span className='absolute inset-y-0 right-0 top-5  flex items-center pl-2'>
-							<button
-								type='submit'
-								className='p-4 focus:outline-none focus:shadow-outline  '>
-								<HiSearch className='h-4 w-4 text-primary my-5' />
-							</button>
-						</span>
-					</div> */}
+					<Dropdown />
 				</div>
 			</section>
 			{/* breeds */}
