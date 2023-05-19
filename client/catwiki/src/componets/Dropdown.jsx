@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import { HiSearch } from 'react-icons/hi';
 
 const Dropdown = ({ catBreeds }) => {
 	const [inputValue, setInputValue] = useState('');
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+	const blurTimeoutRef = useRef(null);
 
 	const handleInputChange = (e) => {
 		setInputValue(e.target.value);
@@ -21,6 +22,10 @@ const Dropdown = ({ catBreeds }) => {
 	const filteredBreeds = catBreeds.filter((breed) =>
 		breed.name.toLowerCase().includes(inputValue.toLowerCase()),
 	);
+	const dropdownHeight =
+		filteredBreeds.length > 5
+			? 'h-dropdown'
+			: `h-${filteredBreeds.length * 36}`;
 
 	return (
 		<div className='relative'>
@@ -44,15 +49,22 @@ const Dropdown = ({ catBreeds }) => {
 			</div>
 
 			{isDropdownOpen && (
-				<ul className='absolute z-10 w-full bg-white shadow-md py-1 rounded-2xl mt-5 h-dropdown overflow-y-auto'>
-					{filteredBreeds.map((breed, index) => (
-						<li
-							key={index}
-							className='px-4 py-2 cursor-pointer hover:bg-gray-100 rounded-2xl font-montserrat'
-							onClick={() => handleItemSelect(breed.name)}>
-							{breed.name}
+				<ul
+					className={`absolute z-10 w-full bg-white shadow-md py-1 rounded-2xl mt-5 overflow-y-auto ${dropdownHeight}`}>
+					{filteredBreeds.length === 0 ? (
+						<li className='px-4 py-2 cursor-default rounded-2xl font-montserrat text-gray-500'>
+							No results found
 						</li>
-					))}
+					) : (
+						filteredBreeds.map((breed, index) => (
+							<li
+								key={index}
+								className='px-4 py-2 cursor-pointer hover:bg-gray-100 rounded-2xl font-montserrat'
+								onClick={() => handleItemSelect(breed.name)}>
+								{breed.name}
+							</li>
+						))
+					)}
 				</ul>
 			)}
 		</div>

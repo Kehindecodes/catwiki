@@ -50,6 +50,7 @@ export default {
 				shadow: '305.12px',
 				photo: '278px',
 				breed: '170px',
+				dropdown: '219.72px',
 			},
 			backgroundImage: {
 				'hero-image': "url('./src/assets/HeroImagemd.png')",

@@ -59,7 +59,7 @@ const Home = () => {
 						Get to know more about your
 						<br /> cat breed
 					</p>
-					<Dropdown />
+					<Dropdown catBreeds={allBreeds} />
 				</div>
 			</section>
 			{/* breeds */}
