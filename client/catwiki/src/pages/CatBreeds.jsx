@@ -24,7 +24,7 @@ const CatBreeds = () => {
 	return (
 		<>
 			<Header />
-			<div className='mx-16 mt-6 h-screen'>
+			<div className='mx-16 mt-6 min-h-screen '>
 				<h1 className='text-primary font-bold text-4xl font-montserrat'>
 					Top 10 most searched breeds
 				</h1>
