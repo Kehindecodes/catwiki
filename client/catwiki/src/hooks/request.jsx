@@ -41,8 +41,8 @@ async function httpGetCatsImagesByBreed(breedId) {
 
 async function httpGetTopBreeds() {
 	try {
-		const response = await axios.get(`${API_URL}/topbreeds`);
-		return await response.json();
+		const response = await axios.get(`${API_URL}/api/v1/topbreeds`);
+		return response;
 	} catch (err) {
 		return {
 			ok: false,
