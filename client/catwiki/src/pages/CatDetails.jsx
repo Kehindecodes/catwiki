@@ -22,7 +22,7 @@ const CatDetails = () => {
 		}
 	};
 	return (
-		<div className='h-screen flex-grow'>
+		<div className='min-h-screen flex-grow'>
 			<Header />
 			<div className='mx-16 flex mt-9'>
 				{/* cat image */}
