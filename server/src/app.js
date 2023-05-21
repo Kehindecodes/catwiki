@@ -17,5 +17,6 @@ app.use('/api/v1/breeds', catBreedRouter);
 app.use('/api/v1/images', catImagesRouter);
 app.use('/api/v1/topbreeds', topCatBreedsRouter);
 app.use('/api/v1/catimages', allCatsImageRouter);
+app.use('/api/v1/breed', allCatsImageRouter);
 
 module.exports = app;
