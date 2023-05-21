@@ -11,6 +11,7 @@ import Footer from '../componets/Footer';
 import { httpGetAllCatsBreeds, httpGetAllCatsImages } from '../hooks/request';
 import SearchDropdown from '../componets/Dropdown';
 import Dropdown from '../componets/Dropdown';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 	const [catData, setCatData] = useState([]);
@@ -75,14 +76,12 @@ const Home = () => {
 					<div
 						className='flex self-end items-center font-bold text-lg font-montserrat text-textTrans
 					hover:text-primary'>
-						<a
-							href='http://'
-							target='_blank'
-							rel='noopener noreferrer'
+						<Link
+							to={'/topbreeds'}
 							className='text-textTrans mr-3 hover:text-primary'>
 							SEE MORE
-						</a>
-						<BsArrowRight className='fil-textTrans mt-1' />
+							<BsArrowRight className='fil-textTrans mt-1' />
+						</Link>
 					</div>
 				</div>
 				{/* breed images */}

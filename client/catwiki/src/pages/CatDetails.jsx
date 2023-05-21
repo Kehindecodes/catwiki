@@ -1,18 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '../componets/Footer';
 import Header from '../componets/Header';
 import cat from '../assets/image 3.png';
+import { httpGetCatsImagesByBreed } from '../hooks/request';
+import { useParams } from 'react-router-dom';
+
 const CatDetails = () => {
-	const [adaptability, setAdaptability] = useState(5);
-	const [affection, setAffection] = useState(5);
-	const [grooming, setGrooming] = useState(1);
-	const [intelligence, setIntelligence] = useState(5);
-	const [childFriendly, setChildFriendly] = useState(4);
-	const [healthIssues, setHealthIssues] = useState(3);
-	const [socialNeeds, setSocialNeeds] = useState(5);
-	const [strangerFriendly, setStrangerFriendly] = useState(3);
+	const { breedId } = useParams();
+	const [adaptability, setAdaptability] = useState(null);
+	const [affection, setAffection] = useState(null);
+	const [grooming, setGrooming] = useState(null);
+	const [intelligence, setIntelligence] = useState(null);
+	const [childFriendly, setChildFriendly] = useState(null);
+	const [healthIssues, setHealthIssues] = useState(null);
+	const [socialNeeds, setSocialNeeds] = useState(null);
+	const [strangerFriendly, setStrangerFriendly] = useState(null);
+	const [breedImages, setBreedImages] = useState([]);
+	const [selectedBreed, setSelectedBreed] = useState(null);
 
 	console.log(affection);
+
+	const fetchBreedDetails = async () => {
+		try {
+			const response = await httpGetCatsImagesByBreed(breedId);
+			const { breed, images } = response.data;
+			setSelectedBreed(breed);
+			setBreedImages(images);
+			setAdaptability(breed.adaptability);
+			setAffection(breed.affection_level);
+			setGrooming(breed.grooming);
+			setHealthIssues(breed.health_issues);
+			setChildFriendly(breed.child_friendly);
+			setIntelligence(breed.intelligence);
+			setSocialNeeds(breed.social_needs);
+			setStrangerFriendly(breed.stranger_friendly);
+			setBreedImages(images);
+		} catch (error) {
+			console.error('Error fetching breed details:', error);
+		}
+	};
+	useEffect(() => {
+		fetchBreedDetails();
+	}, [breedId]);
 
 	const getColorClass = (level, index) => {
 		if (index < level) {
@@ -21,6 +50,11 @@ const CatDetails = () => {
 			return 'bg-gray-500';
 		}
 	};
+
+	useEffect(() => {
+		fetchBreedDetails();
+	}, [breedId]);
+
 	return (
 		<div className='min-h-screen flex-grow'>
 			<Header />
@@ -29,7 +63,7 @@ const CatDetails = () => {
 				<div className='relative w-catImg h-catImg mr-14'>
 					<div className='absolute inset-0 w-shadow h-shadow rounded-3xl bg-shadow mt-8 '></div>
 					<img
-						src={cat}
+						src={images}
 						alt='cat'
 						className=' absolute inset-0 w-catImg h-catImg rounded-3xl ml-4'
 					/>
@@ -37,25 +71,22 @@ const CatDetails = () => {
 				{/* cat details */}
 				<div className='w-catdetails ml-9'>
 					<h2 className='text-primary font-montserrat font-bold text-4xl mb-5'>
-						Benegal
+						{breed}
 					</h2>
 					<p className='text-primary font-montserrat font-medium text-lg mb-5'>
-						Bengals are a lot of fun to live with, but they're definitely not
-						the
-						<br /> cat for everyone, or for first-time cat owners. Extremely{' '}
-						<br />
-						intelligent, curious and active, they demand a lot of interaction
-						and woe betide the owner who doesn't provide it.
+						{selectedBreed.description}
 					</p>
 					<p className='mb-5 font-montserrat font-medium  text-md'>
-						<span className='font-bold'>Temperament: </span>Alert, Agile,
-						Energetic, Demanding, Intelligent
+						<span className='font-bold'>Temperament: </span>
+						{selectedBreed.temperament}
 					</p>
 					<p className='mb-5 font-montserrat font-medium  text-md'>
-						<span className='font-bold'>Origin: </span>United States
+						<span className='font-bold'>Origin: </span>
+						{selectedBreed.origin}
 					</p>
 					<p className='mb-5 font-montserrat font-medium  text-md'>
-						<span className='font-bold'>Life Span: </span>12 - 15 years
+						<span className='font-bold'>Life Span: </span>
+						{selectedBreed.life_span}
 					</p>
 					<div className='flex items-center  mb-5 font-montserrat font-medium text-md'>
 						<div>
@@ -183,31 +214,13 @@ const CatDetails = () => {
 				<h2 className='font-bold text-primary font-montserrat mb-8 text-4xl'>
 					Other Photos
 				</h2>
+
 				<div className='grid grid-cols-4 gap-6 '>
-					<div>
-						<img src={cat} alt='cat' className='w-photo h-photo' />
-					</div>
-					<div>
-						<img src={cat} alt='cat' className='w-photo h-photo' />
-					</div>
-					<div>
-						<img src={cat} alt='cat' className='w-photo h-photo' />
-					</div>
-					<div>
-						<img src={cat} alt='cat' className='w-photo h-photo' />
-					</div>
-					<div>
-						<img src={cat} alt='cat' className='w-photo h-photo' />
-					</div>
-					<div>
-						<img src={cat} alt='cat' className='w-photo h-photo' />
-					</div>
-					<div>
-						<img src={cat} alt='cat' className='w-photo h-photo' />
-					</div>
-					<div>
-						<img src={cat} alt='cat' className='w-photo h-photo' />
-					</div>
+					{breedImages.map((image) => (
+						<div key={image.id}>
+							<img src={image} alt='cat' className='w-photo h-photo' />
+						</div>
+					))}
 				</div>
 			</div>
 			<Footer />

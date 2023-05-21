@@ -15,7 +15,7 @@ async function httpGetCatImagesByBreed(req, res) {
 				},
 			},
 		);
-		return res.status(200).json(images.data.map((image) => image.url));
+		return res.status(200).json(images);
 	} catch (error) {
 		return res.send(error);
 	}
