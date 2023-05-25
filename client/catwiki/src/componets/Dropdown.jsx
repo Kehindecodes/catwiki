@@ -1,12 +1,19 @@
-import React, { useState, useRef } from 'react';
-
+import React, { useState, useRef, useEffect } from 'react';
 import { HiSearch } from 'react-icons/hi';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Dropdown = ({ catBreeds }) => {
 	const [inputValue, setInputValue] = useState('');
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const blurTimeoutRef = useRef(null);
+	const [selectedBreedId, setSelectedBreedId] = useState('');
+	const navigate = useNavigate();
 
+	useEffect(() => {
+		// This effect will run whenever selectedBreedId changes
+		console.log(selectedBreedId);
+		// Perform any necessary actions here that depend on the latest selectedBreedId value
+	}, [selectedBreedId]);
 	const handleInputChange = (e) => {
 		setInputValue(e.target.value);
 	};
@@ -15,9 +22,18 @@ const Dropdown = ({ catBreeds }) => {
 			setIsDropdownOpen(false);
 		}, 200); // Delay the closing of the dropdown to allow the selection to register
 	};
-	const handleItemSelect = (item) => {
+	const handleItemSelect = (item, id) => {
 		setInputValue(item);
+		setSelectedBreedId(id);
 		setIsDropdownOpen(false);
+		// console.log(id);
+		// navigate.push(`/breeds/${item.id}`);
+	};
+	console.log(selectedBreedId);
+	const handleSearchButtonClick = () => {
+		if (selectedBreedId) {
+			navigate(`/breeds/${selectedBreedId}`);
+		}
 	};
 	const filteredBreeds = catBreeds.filter((breed) =>
 		breed.name.toLowerCase().includes(inputValue.toLowerCase()),
@@ -40,11 +56,16 @@ const Dropdown = ({ catBreeds }) => {
 					placeholder='Enter your breed'
 				/>
 				<span className='absolute inset-y-0 right-0 top-5  flex items-center pl-2'>
-					<button
-						type='submit'
-						className='p-4 focus:outline-none focus:shadow-outline  '>
-						<HiSearch className='h-4 w-4 text-primary my-5' />
-					</button>
+					<Link to={`/breeds/${selectedBreedId}`}>
+						<button
+							type='submit'
+							className='p-4 focus:outline-none focus:shadow-outline  '>
+							<HiSearch
+								className='h-4 w-4 text-primary my-5'
+								onClick={handleSearchButtonClick}
+							/>
+						</button>
+					</Link>
 				</span>
 			</div>
 
@@ -60,8 +81,8 @@ const Dropdown = ({ catBreeds }) => {
 							<li
 								key={index}
 								className='px-4 py-2 cursor-pointer hover:bg-gray-100 rounded-2xl font-montserrat'
-								onClick={() => handleItemSelect(breed.name)}>
-								{breed.name}
+								onClick={() => handleItemSelect(breed.name, breed.id)}>
+								<span>{breed.name}</span>
 							</li>
 						))
 					)}

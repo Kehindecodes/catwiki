@@ -80,8 +80,8 @@ const Home = () => {
 							to={'/topbreeds'}
 							className='text-textTrans mr-3 hover:text-primary'>
 							SEE MORE
-							<BsArrowRight className='fil-textTrans mt-1' />
 						</Link>
+						<BsArrowRight className='fil-textTrans mt-1' />
 					</div>
 				</div>
 				{/* breed images */}

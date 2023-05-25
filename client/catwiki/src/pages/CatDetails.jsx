@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const CatDetails = () => {
 	const { breedId } = useParams();
+	console.log(breedId);
 	const [adaptability, setAdaptability] = useState(null);
 	const [affection, setAffection] = useState(null);
 	const [grooming, setGrooming] = useState(null);
@@ -18,12 +19,17 @@ const CatDetails = () => {
 	const [breedImages, setBreedImages] = useState([]);
 	const [selectedBreed, setSelectedBreed] = useState(null);
 
-	console.log(affection);
-
 	const fetchBreedDetails = async () => {
 		try {
-			const response = await httpGetCatsImagesByBreed(breedId);
-			const { breed, images } = response.data;
+			const { data } = await httpGetCatsImagesByBreed(breedId);
+			console.log(data);
+
+			// if (!data.ok) {
+			// 	throw new Error('Error fetching breed details');
+			// }
+
+			const { breed, images } = data;
+
 			setSelectedBreed(breed);
 			setBreedImages(images);
 			setAdaptability(breed.adaptability);
@@ -39,9 +45,6 @@ const CatDetails = () => {
 			console.error('Error fetching breed details:', error);
 		}
 	};
-	useEffect(() => {
-		fetchBreedDetails();
-	}, [breedId]);
 
 	const getColorClass = (level, index) => {
 		if (index < level) {
@@ -63,7 +66,7 @@ const CatDetails = () => {
 				<div className='relative w-catImg h-catImg mr-14'>
 					<div className='absolute inset-0 w-shadow h-shadow rounded-3xl bg-shadow mt-8 '></div>
 					<img
-						src={images}
+						src={breedImages[0]}
 						alt='cat'
 						className=' absolute inset-0 w-catImg h-catImg rounded-3xl ml-4'
 					/>
@@ -71,22 +74,22 @@ const CatDetails = () => {
 				{/* cat details */}
 				<div className='w-catdetails ml-9'>
 					<h2 className='text-primary font-montserrat font-bold text-4xl mb-5'>
-						{breed}
+						{selectedBreed && selectedBreed.name}
 					</h2>
 					<p className='text-primary font-montserrat font-medium text-lg mb-5'>
-						{selectedBreed.description}
+						{selectedBreed && selectedBreed.description}
 					</p>
 					<p className='mb-5 font-montserrat font-medium  text-md'>
 						<span className='font-bold'>Temperament: </span>
-						{selectedBreed.temperament}
+						{selectedBreed && selectedBreed.temperament}
 					</p>
 					<p className='mb-5 font-montserrat font-medium  text-md'>
 						<span className='font-bold'>Origin: </span>
-						{selectedBreed.origin}
+						{selectedBreed && selectedBreed.origin}
 					</p>
 					<p className='mb-5 font-montserrat font-medium  text-md'>
 						<span className='font-bold'>Life Span: </span>
-						{selectedBreed.life_span}
+						{selectedBreed && selectedBreed.life_span}
 					</p>
 					<div className='flex items-center  mb-5 font-montserrat font-medium text-md'>
 						<div>
