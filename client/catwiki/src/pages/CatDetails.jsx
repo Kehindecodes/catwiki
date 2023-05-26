@@ -24,10 +24,6 @@ const CatDetails = () => {
 			const { data } = await httpGetCatsImagesByBreed(breedId);
 			console.log(data);
 
-			// if (!data.ok) {
-			// 	throw new Error('Error fetching breed details');
-			// }
-
 			const { breed, images } = data;
 
 			setSelectedBreed(breed);
@@ -61,37 +57,37 @@ const CatDetails = () => {
 	return (
 		<div className='min-h-screen flex-grow'>
 			<Header />
-			<div className='mx-16 flex mt-9'>
+			<div className=' mx-3 md:mx-12 lg:mx-16 flex flex-col  lg:flex-row mt-4 sm:mt-9'>
 				{/* cat image */}
-				<div className='relative w-catImg h-catImg mr-14'>
-					<div className='absolute inset-0 w-shadow h-shadow rounded-3xl bg-shadow mt-8 '></div>
+				<div className='relative w-full  h-catImg sm:h-full mb-6 lg:mb-0 lg:w-catImg lg:h-catImg mr-0 lg:mr-14'>
+					<div className='  absolute  inset-0 w-shadow h-shadow rounded-3xl  bg-shadow mt-8  hidden  md:hidden   lg:block '></div>
 					<img
 						src={breedImages[0]}
 						alt='cat'
-						className=' absolute inset-0 w-catImg h-catImg rounded-3xl ml-4'
+						className='static lg:absolute inset-1 lg:inset-0 w-full h-full rounded-3xl ml-0 md:ml-0 lg:ml-4'
 					/>
 				</div>
 				{/* cat details */}
-				<div className='w-catdetails ml-9'>
-					<h2 className='text-primary font-montserrat font-bold text-4xl mb-5'>
+				<div className='w-full lg:w-catdetails ml-0 lg:ml-9 mt-4 sm:mt-0'>
+					<h2 className='text-primary font-montserrat font-bold text-3xl sm:text-4xl mb-2 sm:mb-5'>
 						{selectedBreed && selectedBreed.name}
 					</h2>
-					<p className='text-primary font-montserrat font-medium text-lg mb-5'>
+					<p className='text-primary font-montserrat font-medium text-base sm:text-lg mb-2 sm:mb-5'>
 						{selectedBreed && selectedBreed.description}
 					</p>
-					<p className='mb-5 font-montserrat font-medium  text-md'>
+					<p className='mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<span className='font-bold'>Temperament: </span>
 						{selectedBreed && selectedBreed.temperament}
 					</p>
-					<p className='mb-5 font-montserrat font-medium  text-md'>
+					<p className='mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<span className='font-bold'>Origin: </span>
 						{selectedBreed && selectedBreed.origin}
 					</p>
-					<p className='mb-5 font-montserrat font-medium  text-md'>
+					<p className='mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<span className='font-bold'>Life Span: </span>
 						{selectedBreed && selectedBreed.life_span}
 					</p>
-					<div className='flex items-center  mb-5 font-montserrat font-medium text-md'>
+					<div className='flex items-center mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<div>
 							<h2 className='font-bold '>Adaptability:</h2>
 						</div>
@@ -99,104 +95,104 @@ const CatDetails = () => {
 							{[...Array(5)].map((_, index) => (
 								<div
 									key={index}
-									className={`w-12 h-2 rounded-2xl ml-3  ${getColorClass(
+									className={`w-10 h-1 sm:w-12 sm:h-2 rounded-2xl ml-2 sm:ml-3 ${getColorClass(
 										adaptability,
 										index,
 									)}`}></div>
 							))}
 						</div>
 					</div>
-					<div className='flex items-center mb-5 font-montserrat font-medium text-md'>
+					<div className='flex items-center mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<div>
 							<h2 className='font-bold'>Affection Level:</h2>
 						</div>
-						<div className='flex shows '>
+						<div className='flex shows'>
 							{[...Array(5)].map((_, index) => (
 								<div
 									key={index}
-									className={`w-12 h-2 rounded-2xl ml-3  ${getColorClass(
+									className={`w-10 h-1 sm:w-12 sm:h-2 rounded-2xl ml-2 sm:ml-3 ${getColorClass(
 										affection,
 										index,
 									)}`}></div>
 							))}
 						</div>
 					</div>
-					<div className='flex items-center mb-5 font-montserrat font-medium text-md'>
+					<div className='flex items-center mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<div>
 							<h2 className='font-bold'>Child Friendly:</h2>
 						</div>
-						<div className='flex shows '>
+						<div className='flex shows'>
 							{[...Array(5)].map((_, index) => (
 								<div
 									key={index}
-									className={`w-12 h-2 rounded-2xl ml-3  ${getColorClass(
+									className={`w-10 h-1 sm:w-12 sm:h-2 rounded-2xl ml-2 sm:ml-3 ${getColorClass(
 										childFriendly,
 										index,
 									)}`}></div>
 							))}
 						</div>
 					</div>
-					<div className='flex items-center mb-5 font-montserrat font-medium text-md'>
+					<div className='flex items-center mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<div>
 							<h2 className='font-bold'>Grooming:</h2>
 						</div>
-						<div className='flex shows '>
+						<div className='flex shows'>
 							{[...Array(5)].map((_, index) => (
 								<div
 									key={index}
-									className={`w-12 h-2 rounded-2xl ml-3  ${getColorClass(
+									className={`w-10 h-1 sm:w-12 sm:h-2 rounded-2xl ml-2 sm:ml-3 ${getColorClass(
 										grooming,
 										index,
 									)}`}></div>
 							))}
 						</div>
 					</div>
-					<div className='flex items-center mb-5 font-montserrat font-medium text-md'>
+					<div className='flex items-center mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<div>
 							<h2 className='font-bold'>Intelligence:</h2>
 						</div>
-						<div className='flex shows '>
+						<div className='flex shows'>
 							{[...Array(5)].map((_, index) => (
 								<div
 									key={index}
-									className={`w-12 h-2 rounded-2xl ml-3  ${getColorClass(
+									className={`w-10 h-1 sm:w-12 sm:h-2 rounded-2xl ml-2 sm:ml-3 ${getColorClass(
 										intelligence,
 										index,
 									)}`}></div>
 							))}
 						</div>
 					</div>
-					<div className='flex items-center mb-5 font-montserrat font-medium text-md'>
+					<div className='flex items-center mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<div>
 							<h2 className='font-bold'>Health issues:</h2>
 						</div>
-						<div className='flex shows '>
+						<div className='flex shows'>
 							{[...Array(5)].map((_, index) => (
 								<div
 									key={index}
-									className={`w-12 h-2 rounded-2xl ml-3  ${getColorClass(
+									className={`w-10 h-1 sm:w-12 sm:h-2 rounded-2xl ml-2 sm:ml-3 ${getColorClass(
 										healthIssues,
 										index,
 									)}`}></div>
 							))}
 						</div>
 					</div>
-					<div className='flex items-center mb-5 font-montserrat font-medium text-md'>
+					<div className='flex items-center mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<div>
 							<h2 className='font-bold'>Social needs:</h2>
 						</div>
-						<div className='flex shows '>
+						<div className='flex shows'>
 							{[...Array(5)].map((_, index) => (
 								<div
 									key={index}
-									className={`w-12 h-2 rounded-2xl ml-3  ${getColorClass(
+									className={`w-10 h-1 sm:w-12 sm:h-2 rounded-2xl ml-2 sm:ml-3 ${getColorClass(
 										socialNeeds,
 										index,
 									)}`}></div>
 							))}
 						</div>
 					</div>
-					<div className='flex items-center mb-5 font-montserrat font-medium text-md'>
+					<div className='flex items-center mb-2 sm:mb-5 font-montserrat font-medium text-base sm:text-md'>
 						<div>
 							<h2 className='font-bold'>Stranger friendly:</h2>
 						</div>
@@ -204,7 +200,7 @@ const CatDetails = () => {
 							{[...Array(5)].map((_, index) => (
 								<div
 									key={index}
-									className={`w-12 h-2 rounded-2xl ml-3  ${getColorClass(
+									className={`w-10 h-1 sm:w-12 sm:h-2 rounded-2xl ml-2 sm:ml-3 ${getColorClass(
 										strangerFriendly,
 										index,
 									)}`}></div>
@@ -213,15 +209,19 @@ const CatDetails = () => {
 					</div>
 				</div>
 			</div>
-			<div className='mt-8 mx-16'>
-				<h2 className='font-bold text-primary font-montserrat mb-8 text-4xl'>
+			<div className='mt-5 sm:mt-8 mx-3 sm:mx-16'>
+				<h2 className='font-bold text-primary font-montserrat mb-5 text-2xl sm:text-4xl'>
 					Other Photos
 				</h2>
 
-				<div className='grid grid-cols-4 gap-6 '>
+				<div className='grid grid-cols-2    gap-4 sm:grid-cols-4 md:grid-col-4  sm:gap-6 '>
 					{breedImages.map((image) => (
 						<div key={image.id}>
-							<img src={image} alt='cat' className='w-photo h-photo' />
+							<img
+								src={image}
+								alt='cat'
+								className='w-photo h-photo rounded-3xl object-cover'
+							/>
 						</div>
 					))}
 				</div>
