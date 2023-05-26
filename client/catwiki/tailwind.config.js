@@ -39,6 +39,9 @@ export default {
 				catdetails: '601px',
 				photo: '278px',
 				breed: '170px',
+				image3sm: '149.98',
+				image1sm: '172.03px',
+				image2sm: '122.95px',
 			},
 			height: {
 				hero: '538.19px',
@@ -51,6 +54,9 @@ export default {
 				photo: '278px',
 				breed: '170px',
 				dropdown: '219.72px',
+				image3sm: '242.69px',
+				image2sm: '105.09px',
+				image1sm: '184.43px',
 			},
 			backgroundImage: {
 				'hero-image': "url('./src/assets/HeroImagemd.png')",

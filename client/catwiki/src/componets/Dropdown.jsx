@@ -52,7 +52,7 @@ const Dropdown = ({ catBreeds }) => {
 					onChange={handleInputChange}
 					onFocus={() => setIsDropdownOpen(true)}
 					onBlur={handleInputBlur}
-					className='form-input px-6 py-3 rounded-full w-input mt-6 focus:outline-none font-montserrat text-primary text-lg'
+					className='form-input px-6 py-3 rounded-full w-full lg:w-input mt-6 focus:outline-none font-montserrat text-primary text-lg'
 					placeholder='Enter your breed'
 				/>
 				<span className='absolute inset-y-0 right-0 top-5  flex items-center pl-2'>
