@@ -9,4 +9,8 @@ export default defineConfig({
 			'/api': 'http://localhost:9000/',
 		},
 	},
+	build: {
+		outDir: '../../server/public',
+		assetsDir: 'assets',
+	},
 });
