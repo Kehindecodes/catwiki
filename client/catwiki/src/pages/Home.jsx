@@ -89,7 +89,7 @@ const Home = () => {
 							<img
 								src={cat.url}
 								alt='cats'
-								className='w-full h-auto rounded-lg object-cover'
+								className='w-full h-full rounded-lg object-cover'
 							/>
 							<p className='text-primary font-montserrat text-lg mt-2 font-semibold text-center'>
 								{cat.name}
