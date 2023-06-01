@@ -59,7 +59,7 @@ export default {
 				image1sm: '184.43px',
 			},
 			backgroundImage: {
-				'hero-image': "url('./src/assets/HeroImagemd.png')",
+				'hero-image': "url('./assets/HeroImagemd.png')",
 				'footer-texture': "url('/img/footer-texture.png')",
 			},
 			shadow: {

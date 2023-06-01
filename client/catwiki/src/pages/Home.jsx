@@ -85,7 +85,7 @@ const Home = () => {
 				{/* breed images */}
 				<div className='my-8 sm:my-12 flex flex-wrap justify-center gap-4 sm:gap-8'>
 					{visibleCatData.map((cat) => (
-						<div key={cat.id} className='w-48 sm:w-auto'>
+						<div key={cat.id} className='w-breedImg h-breedImg '>
 							<img
 								src={cat.url}
 								alt='cats'

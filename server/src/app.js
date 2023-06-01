@@ -10,6 +10,7 @@ const catImagesRouter = require('./routes/catImages.router');
 const allCatsImageRouter = require('./routes/allCatsImages.route');
 
 app.use(cors());
+app.use(express.static('./public'));
 app.use(express.json());
 
 // route
