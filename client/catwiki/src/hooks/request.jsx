@@ -3,7 +3,7 @@ const API_URL = 'http://localhost:9000';
 
 async function httpGetAllCatsBreeds() {
 	try {
-		const response = await axios.get(`${API_URL}/api/v1/breeds`);
+		const response = await axios.get('/api/v1/breeds');
 		return response;
 	} catch (err) {
 		return {
@@ -13,7 +13,7 @@ async function httpGetAllCatsBreeds() {
 }
 async function httpGetAllCatsImages() {
 	try {
-		const response = await axios.get(`${API_URL}/api/v1/catimages`);
+		const response = await axios.get('/api/v1/catimages');
 		return response;
 	} catch (err) {
 		return {
@@ -24,7 +24,7 @@ async function httpGetAllCatsImages() {
 
 async function httpGetCatsImagesByBreed(breedId) {
 	try {
-		const response = await axios.get(`${API_URL}/api/v1/breeds/${breedId}`);
+		const response = await axios.get(`/api/v1/breeds/${breedId}`);
 
 		return response;
 	} catch (err) {
@@ -36,7 +36,7 @@ async function httpGetCatsImagesByBreed(breedId) {
 
 async function httpGetTopBreeds() {
 	try {
-		const response = await axios.get(`${API_URL}/api/v1/topbreeds`);
+		const response = await axios.get('/api/v1/topbreeds');
 		return response;
 	} catch (err) {
 		return {
